@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:fc="http://java.sun.com/jsf/composite/fluttercode/component"
+	template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<f:metadata>
+			<f:viewParam name="personId" value="#{teacherHome.id}" />
+			<f:event type="preRenderView" listener="#{teacherHome.init(true)}" />
+		</f:metadata>
+		<h:form id="personEdit">
+			<fc:panel>
+
+				<h1><h:outputText value="Edit : #{teacherHome.teacher.name}"
+					rendered="#{teacherHome.managed}" /> <h:outputText
+					value="Create New Teacher"	rendered="#{!teacherHome.managed}" /></h1>
+
+				<fc:property caption="Id">#{teacherHome.teacher.id}</fc:property>
+				
+				<fc:property caption="First Name">
+					<h:inputText value="#{teacherHome.teacher.firstName}" id="firstName"
+						styleClass="value" />
+					<h:message for="firstName" styleClass="errorMessage" />
+				</fc:property>
+
+				<fc:property caption="Last Name">
+					<h:inputText value="#{teacherHome.teacher.lastName}" id="lastName"
+						styleClass="value" />
+					<h:message for="lastName" styleClass="errorMessage" />
+				</fc:property>
+
+			</fc:panel>
+
+			<h:commandButton action="#{teacherHome.save}" value="Save"
+				style="margin-right : 12px" />
+
+			<h:commandButton action="#{teacherHome.cancel}" value="Cancel"
+				immediate="true" />
+		</h:form>
+	</ui:define>
+</ui:composition>

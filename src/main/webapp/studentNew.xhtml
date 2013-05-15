@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:fc="http://java.sun.com/jsf/composite/fluttercode/component"
+	template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{studentHome.init(true)}" />
+		</f:metadata>
+		<h:form id="personEdit">
+			<fc:panel>
+
+				<h1><h:outputText value="Create New Student"/></h1>
+
+				<fc:property caption="First Name">
+					<h:inputText value="#{studentHome.student.firstName}" id="firstName"
+						styleClass="value" />
+					<h:message for="firstName" styleClass="errorMessage" />
+				</fc:property>
+
+				<fc:property caption="Last Name">
+					<h:inputText value="#{studentHome.student.lastName}" id="lastName"
+						styleClass="value" />
+					<h:message for="lastName" styleClass="errorMessage" />
+				</fc:property>
+
+				<fc:property caption="Merits">
+					<h:inputText value="#{studentHome.student.merits}" styleClass="value"
+						id="merits" />
+					<h:message for="merits" styleClass="errorMessage" />
+				</fc:property>
+
+				<h:panelGrid columns="3">
+					<h:outputText value="Available Courses" />
+					<h:outputText value="" />
+					<h:outputText value="Enrolled Courses" />
+					<h:selectManyListbox
+						value="#{courseAssignment.selectedAvailableCourses}"
+						style="height : 120px">
+						<f:selectItems value="#{courseAssignment.availableCoursesItems}" />
+					</h:selectManyListbox>
+					<h:panelGroup layout="block">
+						<h:commandButton value="Add >>" style="width : 100px;margin : 4px"
+							actionListener="#{courseAssignment.addStudentToSelectedCourses}">
+						</h:commandButton>
+						<br />
+						<h:commandButton value="&lt;&lt; Remove"
+							action="#{courseAssignment.removeStudentFromSelectedCourses}"
+							style="width : 100px;margin : 4px" />
+					</h:panelGroup>
+					<h:selectManyListbox
+						value="#{courseAssignment.selectedEnrolledCourses}"
+						style="height : 120px">
+						<f:selectItems value="#{courseAssignment.enrolledCoursesItems}" />
+					</h:selectManyListbox>
+
+				</h:panelGrid>
+			</fc:panel>
+
+			<h:commandButton action="#{studentHome.save}" value="Save"
+				style="margin-right : 12px" />
+
+			<h:commandButton action="#{studentHome.cancel}" value="Cancel"
+				immediate="true" />
+		</h:form>
+	</ui:define>
+</ui:composition>

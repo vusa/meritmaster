@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:fc="http://java.sun.com/jsf/composite/fluttercode/component"
+	template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<f:metadata>
+			<f:viewParam name="personId" value="#{teacherHome.id}" />
+			<f:event type="preRenderView" listener="#{teacherHome.init(false)}" />
+		</f:metadata>
+
+		<h:form>
+
+			<fc:panel
+				caption="Teacher : #{teacherHome.teacher.name}">
+				<fc:property caption="Id">#{teacherHome.teacher.id}</fc:property>
+				<fc:property caption="Name">#{teacherHome.teacher.name}</fc:property>
+				<fc:auditInfo entity="#{teacherHome.teacher}" captionClass="caption"
+					valueClass="value" />
+
+				<h:button outcome="home" value="Back to List"
+					style="margin-right  : 24px" />
+				<h:button outcome="teacherEdit" value="Edit Person">
+					<f:param name="personId" value="#{teacherHome.teacher.id}" />
+				</h:button>
+
+			</fc:panel>
+			<fc:panel caption="Courses Taught">
+
+				<h:dataTable styleClass="dataTable" value="#{teacherHome.courses}"
+					var="v_course">
+					<h:column>
+							(<h:link outcome="courseView" value="details">
+							<f:param name="courseId" value="#{v_course.id}" />
+						</h:link>)
+				</h:column>
+
+					<h:column>
+						<f:facet name="header">Code</f:facet>
+						<h:outputText value="#{v_course.code}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Title</f:facet>
+						<h:outputText value="#{v_course.title}" />
+					</h:column>
+
+				</h:dataTable>
+			</fc:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
