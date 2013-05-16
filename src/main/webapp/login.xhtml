@@ -12,12 +12,12 @@
         <br />
         <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
         <h:form>
-            <h:outputLabel value="Email:"/><p:inputText title="email" required="true" requiredMessage="user must have an email." value="#{personView.person.email}"/><br />
-            <h:outputLabel value="Password:"/><p:password value="#{personView.person.password}"/><br />
-            <h:commandButton action="#{personView.login()}" value="Login"/>
+            <h:outputLabel value="Email:"/><p:inputText title="email" required="true" requiredMessage="user must have an email." value="#{personHome.person.email}"/><br />
+            <h:outputLabel value="Password:"/><p:password value="#{personHome.person.password}"/><br />
+            <h:commandButton action="#{personHome.login()}" value="Login"/>
         </h:form>
         <br />
-        <h:outputLabel value="Number of users in system:"/>#{personView.numberOfUsers}
+        <h:outputLabel value="Number of users in system:"/>#{personHome.numberOfUsers}
         <h:form>
             <h:commandLink action="#{assignment.listSetup}" value="Show All Assignment Items"/>
         </h:form>

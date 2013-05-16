@@ -35,7 +35,7 @@ import za.co.merits.model.Teacher;
  */
 @Named
 @ConversationScoped
-public class CourseAssignment implements Serializable {
+public class CourseAssign implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
