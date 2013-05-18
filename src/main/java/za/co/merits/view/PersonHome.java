@@ -15,7 +15,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @RequestScoped
-public class PersonView {
+public class PersonHome {
     @EJB
     private PersonFacade personFacade;
     private Person person;
@@ -23,7 +23,7 @@ public class PersonView {
     /**
      * Creates a new instance of UsersView
      */
-    public PersonView() {
+    public PersonHome() {
         this.person = new Person();
     }
 

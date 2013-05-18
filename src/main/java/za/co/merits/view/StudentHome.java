@@ -22,6 +22,8 @@ public class StudentHome extends EntityHome<Student> implements Serializable {
 
 	private List<Course> courses;
 
+   private boolean addNew;
+
 	// snapshot of the students enrolled courses is captured at load time so we
 	// can determine any changes later on.
 	private List<Course> initialEnrollment = new ArrayList<Course>();
@@ -33,7 +35,7 @@ public class StudentHome extends EntityHome<Student> implements Serializable {
 	 */
 	@Override
 	protected boolean doInit() {
-		if (getId() == null) {
+		if (getId() == null && !addNew) {
 			ViewUtil.redirect("home.jsf");
 			return false;
 		}
@@ -67,15 +69,9 @@ public class StudentHome extends EntityHome<Student> implements Serializable {
 		return courses;
 	}
 
-	/**
-	 * Save the person and if it is a teacher, it notifies the student of any
-	 * course changes via email using the CDI event mechanism.
-	 *
-	 * Also ends the current conversation and redirects to the person view page.
-	 */
 	public void save() {
 		meritsFacade.save(getEntity());
-			meritsFacade.notifyCourseChanges(getEntity(), initialEnrollment);
+		meritsFacade.notifyCourseChanges(getEntity(), initialEnrollment);
 		getConversation().end();
 		ViewUtil.redirect("studentView.jsf?personId=" + getEntity().getId());
 	}
@@ -106,4 +102,11 @@ public class StudentHome extends EntityHome<Student> implements Serializable {
 		return getEntity();
 	}
 
+    public boolean isAddNew() {
+        return addNew;
+    }
+
+    public void setAddNew(boolean addNew) {
+        this.addNew = addNew;
+    }
 }

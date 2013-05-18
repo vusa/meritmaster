@@ -44,23 +44,23 @@
 					<h:outputText value="" />
 					<h:outputText value="Enrolled Courses" />
 					<h:selectManyListbox
-						value="#{courseAssignment.selectedAvailableCourses}"
+						value="#{courseAssign.selectedAvailableCourses}"
 						style="height : 120px">
-						<f:selectItems value="#{courseAssignment.availableCoursesItems}" />
+						<f:selectItems value="#{courseAssign.availableCoursesItems}" />
 					</h:selectManyListbox>
 					<h:panelGroup layout="block">
 						<h:commandButton value="Add >>" style="width : 100px;margin : 4px"
-							actionListener="#{courseAssignment.addStudentToSelectedCourses}">
+							actionListener="#{courseAssign.addStudentToSelectedCourses}">
 						</h:commandButton>
 						<br />
 						<h:commandButton value="&lt;&lt; Remove"
-							action="#{courseAssignment.removeStudentFromSelectedCourses}"
+							action="#{courseAssign.removeStudentFromSelectedCourses}"
 							style="width : 100px;margin : 4px" />
 					</h:panelGroup>
 					<h:selectManyListbox
-						value="#{courseAssignment.selectedEnrolledCourses}"
+						value="#{courseAssign.selectedEnrolledCourses}"
 						style="height : 120px">
-						<f:selectItems value="#{courseAssignment.enrolledCoursesItems}" />
+						<f:selectItems value="#{courseAssign.enrolledCoursesItems}" />
 					</h:selectManyListbox>
 
 				</h:panelGrid>

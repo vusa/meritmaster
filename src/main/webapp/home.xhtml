@@ -81,12 +81,12 @@
 					disabled="#{!studentSearch.nextPageAvailable}" />
 				<h:panelGroup style="border-top: 1px solid #d0d0d0; margin: 8px"
 					layout="block">
-					<h:link outcome="studentEdit" value="Add New Student"
+					<h:link outcome="studentNew" value="Add New Student"
 						style="margin-right : 12px">
-						<f:param name="type" value="student" />
+						<f:param name="new" value="true" />
 					</h:link>
 
-					<h:link outcome="personEdit" value="Add New Teacher"
+					<h:link outcome="teacherEdit" value="Add New Teacher"
 						style="margin-right : 12px">
 						<f:param name="type" value="teacher" />
 					</h:link>

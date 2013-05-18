@@ -49,15 +49,15 @@
         <br />
         <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
         <h:form id="userDetailForm">
-            <h:outputLabel value="Name:"/><h:inputText title="Name" value="#{personView.person.displayName}"/><br />
-            <h:outputLabel value="Email:"/><p:inputText title="email" required="true" requiredMessage="user must have an email." value="#{personView.person.email}"/><br />
-            <h:outputLabel value="Password:"/><p:password value="#{personView.person.password}"/><br />
-            <h:outputLabel value="DoB:"/><p:calendar value="#{personView.person.dateOfBirth}"/><br />
+            <h:outputLabel value="Name:"/><h:inputText title="Name" value="#{personHome.person.displayName}"/><br />
+            <h:outputLabel value="Email:"/><p:inputText title="email" required="true" requiredMessage="user must have an email." value="#{personHome.person.email}"/><br />
+            <h:outputLabel value="Password:"/><p:password value="#{personHome.person.password}"/><br />
+            <h:outputLabel value="DoB:"/><p:calendar value="#{personHome.person.dateOfBirth}"/><br />
             <p:growl id="messages" showDetail="true" />
 
             <p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID"
                     style="width:600px;height:400px"
-                    model="#{personView.emptyModel}"
+                    model="#{personHome.emptyModel}"
                     onPointClick="handlePointClick(event);"
                     widgetVar="map" />
 
@@ -65,21 +65,21 @@
                 <h:form prependId="false">
                     <h:panelGrid columns="2">
                         <h:outputLabel for="title" value="Title:" />
-                        <p:inputText id="title" value="#{personView.place.name}" />
+                        <p:inputText id="title" value="#{personHome.place.name}" />
                             <p:commandButton value="Add"
-                                             actionListener="#{personView.addMarker}"
+                                             actionListener="#{personHome.addMarker}"
                                              oncomplete="markerAddComplete()"/>
                             <p:commandButton value="Cancel" onclick="return cancel()"/>
                     </h:panelGrid>
 
-                    <h:inputHidden id="lat" value="#{personView.place.lat}" />
-                    <h:inputHidden id="lng" value="#{personView.place.lng}" />
+                    <h:inputHidden id="lat" value="#{personHome.place.lat}" />
+                    <h:inputHidden id="lng" value="#{personHome.place.lng}" />
                 </h:form>
             </p:dialog>
 
-            <p:commandButton action="#{personView.createUser()}" value="Create User"/>
+            <p:commandButton action="#{personHome.createUser()}" value="Create User"/>
         </h:form>
         <br />
-        <h:outputLabel value="Number of users in system:"/>#{personView.numberOfUsers}
+        <h:outputLabel value="Number of users in system:"/>#{personHome.numberOfUsers}
     </h:body>
 </html>
