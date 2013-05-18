@@ -10,10 +10,10 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "User.findAll", query = "SELECT u FROM Person u"),
-    @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM Person u WHERE u.email = :email"),
-    @NamedQuery(name = "User.login", query = "SELECT u FROM Person u WHERE u.email = :email AND u.password= :password"),
-    @NamedQuery(name = "User.findById", query = "SELECT u FROM Person u WHERE u.id = :id")})
+    @NamedQuery(name = "Person.findAll", query = "SELECT u FROM Person u"),
+    @NamedQuery(name = "Person.findByEmail", query = "SELECT u FROM Person u WHERE u.email = :email"),
+    @NamedQuery(name = "Person.login", query = "SELECT u FROM Person u WHERE u.email = :email AND u.password= :password"),
+    @NamedQuery(name = "Person.findById", query = "SELECT u FROM Person u WHERE u.id = :id")})
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Person extends BaseEntity {
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation

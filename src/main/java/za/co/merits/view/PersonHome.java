@@ -40,8 +40,6 @@ public class PersonHome {
     }
     
     public String createUser(){
-        person.setFirstName(person.getDisplayName());
-        person.setLastName(person.getDisplayName());
         personFacade.create(person);
         return "person-created";
     }

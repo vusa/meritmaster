@@ -13,10 +13,10 @@
 			<var>messages</var>
 		</resource-bundle>
 	</application>
-    <navigation-rule>
+ <!--   <navigation-rule>
         <navigation-case>
-            <from-outcome>welcome</from-outcome>
+            <from-outcome>login</from-outcome>
             <to-view-id>/login.xhtml</to-view-id>
         </navigation-case>
-    </navigation-rule>
+    </navigation-rule>  -->
     </faces-config>
